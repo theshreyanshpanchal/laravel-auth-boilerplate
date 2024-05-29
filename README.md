@@ -6,38 +6,35 @@ Laravel fully developed auth boilerplate for your next project
 
 ## Installation & Setup
 
-To install & setup the boilerplate, please first clone the repo by using below command:
+Start by cloning the repository:
 
 ```bash
 git clone https://github.com/theshreyanshpanchal/laravel-auth-boilerplate.git
 ```
 
-PLease perform the below commands to setup the boilerplate:
+Run the following commands to migrate the required tables and seed the default admin user:
 
 ```bash
-php artisan migrate # It will migrate the required tables.
+php artisan migrate # Migrate the required tables.
 
-php artisan db:seed # It will seed the default Admin user.
+php artisan db:seed # Seed the default admin user.
 ```
 
-## Additional
+## Additional Setup
 
-Additionally we have used the our own package [Atlas](https://github.com/theshreyanshpanchal/atlas) for the comprehensive global data.
+This project uses the [Atlas](https://github.com/theshreyanshpanchal/atlas) package for comprehensive global data. To set up Atlas, run:
 
 Please run the below command to setup the Atlas.
 
 ```bash
-# It will setup the atlas to serve comprehensive global data.
-# We have just enabled the 'Countries' facility for now.
-
-php artisan atlas:install
+php artisan atlas:install # Set up Atlas to serve comprehensive global data (currently enabled for 'Countries').
 ```
 
 ## Features Available
 
 ✅ Registration
 
-✅ Login (With user lockout feature - It will lockout the user on multiple invalid attempts.)
+✅ Login (with user lockout feature for multiple invalid attempts)
 
 ✅ Remember Me
 
@@ -45,11 +42,11 @@ php artisan atlas:install
 
 ✅ Password Reset
 
-✅ Email Verification (Common multi-purpose module for the email verification.)
+✅ Email Verification (common multi-purpose module)
 
-✅ Role Permissions Management (Role and permission based common dashboard and modules.)
+✅ Role Permissions Management (role and permission-based common dashboard and modules)
 
-✅ Browser Sessions Management (let users see where they’re connected and logout sessions.)
+✅ Browser Sessions Management (let users see their active sessions and logout if necessary)
 
 ## Credits
 
