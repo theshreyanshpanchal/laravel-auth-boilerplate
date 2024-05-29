@@ -1,0 +1,20 @@
+[
+    {
+        "display_name": "Admin",
+
+        "name": "admin",
+
+        "description": "Has full access to administrative features and user management.",
+
+        "permissions": [ "dashboard", "view-my-profile", "update-my-profile", "change-password" ]
+    },
+    {
+        "display_name": "User",
+
+        "name": "user",
+
+        "description": "Can access personal dashboard and manage their own profile.",
+
+        "permissions": [ "dashboard", "view-my-profile", "update-my-profile", "change-password" ]
+    }
+]

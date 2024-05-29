@@ -1,0 +1,51 @@
+[
+    {
+        "display_name": "View profile",
+
+        "name": "view-profile",
+
+        "description": "Allows viewing user profiles."
+    },
+    {
+        "display_name": "Update profile",
+
+        "name": "update-profile",
+
+        "description": "Enables updating user profiles."
+    },
+    {
+        "display_name": "Change password",
+
+        "name": "change-password",
+
+        "description": "Permits password changes."
+    },
+    {
+        "display_name": "User list",
+
+        "name": "user-list",
+
+        "description": "Allows viewing users list."
+    },
+    {
+        "display_name": "Role & permission list",
+
+        "name": "role-permission-list",
+
+        "description": "Allows viewing roles & permission list."
+    },
+    {
+        "display_name": "Activity list",
+
+        "name": "activity-list",
+
+        "description": "Allows viewing users activity list."
+    },
+    {
+        "display_name": "Dashboard",
+
+        "name": "dashboard",
+
+        "description": "Access to the main dashboard."
+    }
+]
