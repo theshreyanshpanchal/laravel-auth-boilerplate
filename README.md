@@ -18,6 +18,12 @@ Run the following commands to migrate the required tables and seed the default a
 php artisan migrate # Migrate the required tables.
 
 php artisan db:seed # Seed the default admin user.
+
+php artisan sync:permission # Sync the permissions with admin user.
+
+php artisan sync:stripe-products # Sync the stripe plans with system.
+
+# Note: For sync the stripe products, You need to provide the STRIPE_KEY, STRIPE_SECRET & CASHIER_CURRENCY in .env file. See the .env.example for more details.
 ```
 
 ## Additional Setup
