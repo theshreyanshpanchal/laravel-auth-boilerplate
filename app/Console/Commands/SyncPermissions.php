@@ -8,9 +8,9 @@ use Illuminate\Console\Command;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
-class SyncPermission extends Command
+class SyncPermissions extends Command
 {
-    protected $signature = 'sync:permission';
+    protected $signature = 'sync:permissions';
 
     protected $description = 'Command to assign new permissions to admin user';
 

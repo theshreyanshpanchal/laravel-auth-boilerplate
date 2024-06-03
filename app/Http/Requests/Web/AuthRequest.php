@@ -84,6 +84,21 @@ class AuthRequest extends FormRequest
             ];
         }
 
+        if ($route === 'change-password') {
+
+            return [
+
+                'email' => 'required|string|email|max:100|exists:users,email,deleted_at,NULL',
+
+                'old_password' => 'required|min:6',
+
+                'new_password' => 'required|min:6',
+
+                'confirm_new_password' => 'required_with:new_password|same:new_password|min:6',
+
+            ];
+        }
+
         if ($route === 'profile') {
 
             return [

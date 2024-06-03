@@ -28,12 +28,40 @@
 
         </button>
 
-        <div x-show="isOpen" @click.away="isOpen = false" class="absolute right-0 mt-2 w-40 p-2 bg-green-600 dark:bg-green-800 rounded shadow-xl transform origin-top transition-all duration-300" style="display: none;">
+        <div x-show="isOpen" @click.away="isOpen = false" class="absolute right-0 mt-2 w-40 p-2 bg-green-600 dark:bg-green-800 rounded shadow-xl transform origin-top transition-all duration-300 z-10" style="display: none;">
 
             <a href="{{ route('view:profile') }}" class="block p-2 text-normal text-white rounded">{{ __('Profile') }}</a>
+
+            <a href="{{ route('view:change-password') }}" class="block p-2 text-normal text-white rounded">{{ __('Change Password') }}</a>
 
         </div>
 
     </div>
+
+    @if (! (auth()->user()->roles->first()->name === App\Enums\UserRole::ADMIN->value))
+
+        @if (auth()->user()->subscribed())
+
+            <div class="absolute top-full right-0 transform translate-y-1/2 bg-green-500 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg">
+
+                <span>You are currently subscribed to our one of plan.</span>
+
+            </div>
+
+        @else
+
+            <div class="absolute top-full right-0 transform translate-y-1/2 bg-red-500 text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg">
+
+                <span>You are currently not subscribed to any plan.</span>
+
+                <br>
+
+                <span>Please visit <a href="{{ route('view:subscriptions') }}" class="underline">{{ __('subscriptions') }}</a> for more details.</span>
+
+            </div>
+
+        @endif
+
+    @endif
 
 </header>

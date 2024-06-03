@@ -10,11 +10,12 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Cashier\Billable;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use Notifiable, SoftDeletes, HasRoles;
+    use Notifiable, SoftDeletes, HasRoles, Billable;
 
     protected $guarded = [];
 
@@ -59,6 +60,11 @@ class User extends Authenticatable
     public function activities()
     {
         return $this->morphMany(Activity::class, 'model');
+    }
+
+    public function purchases()
+    {
+        return $this->hasMany(Purchase::class);
     }
 
     public function scopeExcludeAdmin(Builder $query): Builder

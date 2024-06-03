@@ -407,6 +407,34 @@ class AuthController extends Controller
         return redirect("profile")->withSuccess('Profile updated successfully.');
     }
 
+    public function changePasswordView(): View
+    {
+        return view('pages.auth.change-password');
+    }
+
+    public function changePassword(AuthRequest $request): RedirectResponse
+    {
+
+        $user = Auth::user();
+
+        if (!Hash::check($request->old_password, $user->password)) {
+
+            return redirect()->back()->withErrors(['change-password' => 'Please provide the correct old password.']);
+
+        }
+
+        if ($request->new_password === $request->old_password) {
+
+            return redirect()->back()->withErrors(['change-password' => 'New password and old password cannot be the same.']);
+
+        }
+
+        tap($user)->update([ 'password' => Hash::make($request->new_password) ]);
+
+        return redirect('change-password')->withSuccess('Password changed successfully.');
+
+    }
+
     private function sendOtp(
 
         ?VerificationType $type = VerificationType::EMAIL_VERIFICATION,

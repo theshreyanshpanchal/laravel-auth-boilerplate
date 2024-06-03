@@ -20,6 +20,6 @@ class Role
 
         $message = 'You doesn\'t have correct roles.';
 
-        return redirect("dashboard")->withErrors([ 'role-&-permission' => $message ]);
+        return redirect("dashboard")->withErrors([ 'message' => $message ]);
     }
 }

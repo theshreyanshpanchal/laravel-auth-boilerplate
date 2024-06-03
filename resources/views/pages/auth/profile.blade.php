@@ -26,15 +26,15 @@
 
             <h3 class="text-2xl text-green-600 dark:text-green-800 font-bold leading-normal mb-1">{{ auth()->user()->full_name }}</h3>
 
-            <div class="text-xs mt-0 mb-2 text-slate-400 font-bold">
+            <div class="text-xs mt-0 mb-2 font-bold text-black dark:text-white">
 
-                <i class="fas fa-map-marker-alt mr-2 text-slate-400 opacity-75"></i>{{ auth()->user()->email }}
+                <i class="fas fa-map-marker-alt mr-2 opacity-75"></i>{{ auth()->user()->email }}
 
             </div>
 
         </div>
 
-        <div class="mt-6 py-6 border-t border-slate-200 text-center">
+        <div class="mt-6 py-6 border-t border-slate-200 text-center text-black dark:text-white">
 
             <div class="flex flex-wrap justify-center">
 
@@ -122,8 +122,6 @@
                     ])
 
                     @endcomponent
-
-                    @component('components.elements.error', [ 'error' => 'email-or-password' ]) @endcomponent
 
                     <button type="submit" class="bg-green-600 dark:bg-green-700 font-bold text-white focus:outline-none rounded p-3 cursor-pointer mt-1">
 

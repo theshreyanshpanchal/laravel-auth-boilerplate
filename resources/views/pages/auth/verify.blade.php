@@ -64,14 +64,10 @@
 
                         <div class="flex justify-center">
 
-                            {{ $errors->first('verify') }}
-
                             @if(isset($messageBag))
-
                                 @component('components.elements.error', [ 'error' => 'verify', 'messageBag' => $messageBag ]) @endcomponent
 
                             @else
-
                                 @component('components.elements.error', [ 'error' => 'verify' ]) @endcomponent
 
                             @endif

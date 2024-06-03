@@ -76,7 +76,7 @@ class RolePermissionController extends Controller
 
         } else {
 
-            return redirect()->back()->withErrors([ 'role-&-permission' => 'Permissions for admin can not be changed.' ]);
+            return redirect()->back()->withErrors([ 'message' => 'Permissions for admin can not be changed.' ]);
 
         }
     }

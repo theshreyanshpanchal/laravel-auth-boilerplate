@@ -3,7 +3,9 @@
 use App\Http\Controllers\Web\ActivityController;
 use App\Http\Controllers\Web\AuthController;
 use App\Http\Controllers\Web\DashboardController;
+use App\Http\Controllers\Web\ProductController;
 use App\Http\Controllers\Web\RolePermissionController;
+use App\Http\Controllers\Web\SubscriptionController;
 use App\Http\Controllers\Web\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -96,13 +98,49 @@ Route::middleware('authenticate')->group(function() {
 
         });
 
-        Route::get('/dashboard', [DashboardController::class, 'view'])->name('dashboard')->middleware(['permission:dashboard']);;
+        Route::get('/dashboard', [DashboardController::class, 'view'])->name('dashboard')->middleware(['permission:dashboard']);
 
         Route::prefix('profile')->group(function() {
 
-            Route::get('/', [AuthController::class, 'profileView'])->name('view:profile');
+            Route::get('/', [AuthController::class, 'profileView'])->name('view:profile')->middleware('permission:view-profile');
 
-            Route::post('/', [AuthController::class, 'profile'])->name('profile');
+            Route::post('/', [AuthController::class, 'profile'])->name('profile')->middleware('permission:update-profile');
+
+        });
+
+        Route::prefix('change-password')->group(function() {
+
+            Route::get('/', [AuthController::class, 'changePasswordView'])->name('view:change-password');
+
+            Route::post('/', [AuthController::class, 'changePassword'])->name('change-password');
+
+        });
+
+        Route::prefix('subscription')->group(function() {
+
+            Route::get('/', [SubscriptionController::class, 'view'])->name('view:subscriptions');
+
+            Route::post('/', [SubscriptionController::class, 'subscription'])->name('subscription')->middleware('role:user');
+
+        });
+
+        Route::prefix('products')->group(function() {
+
+            Route::get('/', [ProductController::class, 'view'])->name('view:products');
+
+            Route::middleware('role:user')->group(function() {
+
+                Route::get('/{id}', [ProductController::class, 'show'])->name('show:product');
+
+                Route::post('/purchase', [ProductController::class, 'purchase'])->name('purchase');
+
+            });
+
+        });
+
+        Route::middleware(['role:user', 'subscribed'])->group(function() {
+
+            Route::get('/only-for-subscriber', [SubscriptionController::class, 'onlyForSubscriber'])->name('only-for-subscriber');
 
         });
 

@@ -26,6 +26,6 @@ class Permission
 
         $message = 'You doesn\'t have correct permission.';
 
-        return redirect("dashboard")->withErrors([ 'role-&-permission' => $message ]);
+        return redirect("dashboard")->withErrors([ 'message' => $message ]);
     }
 }

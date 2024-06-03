@@ -40,13 +40,23 @@ php artisan atlas:install # Set up Atlas to serve comprehensive global data (cur
 
 ✅ Profile Management
 
-✅ Password Reset
+✅ Reset Password
+
+✅ Change Password
 
 ✅ Email Verification (common multi-purpose module)
 
 ✅ Role Permissions Management (role and permission-based common dashboard and modules)
 
 ✅ Browser Sessions Management (let users see their active sessions and logout if necessary)
+
+## More Additional Features
+
+✅ Laravel cashier/stripe integration
+
+✅ Subscription (recurring payments)
+
+✅ Product purchase (one time payments)
 
 ## Credits
 

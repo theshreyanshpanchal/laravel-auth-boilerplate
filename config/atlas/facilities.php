@@ -12,12 +12,12 @@ return [
     'enabled' => [
         // Tables::CITIES,
         Tables::COUNTRIES,
-        Tables::CURRENCIES,
-        Tables::PAYMENT_METHODS,
-        Tables::PAYMENT_PRODUCTS,
-        Tables::STATES,
-        Tables::TIMEZONES,
-        Tables::CONTINENTS,
+        // Tables::CURRENCIES,
+        // Tables::PAYMENT_METHODS,
+        // Tables::PAYMENT_PRODUCTS,
+        // Tables::STATES,
+        // Tables::TIMEZONES,
+        // Tables::CONTINENTS,
     ],
 
     /*

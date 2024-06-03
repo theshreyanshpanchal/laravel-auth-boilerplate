@@ -5,6 +5,7 @@ use App\Http\Middleware\Guest;
 use App\Http\Middleware\NotVerified;
 use App\Http\Middleware\Permission;
 use App\Http\Middleware\Role;
+use App\Http\Middleware\Subscribed;
 use App\Http\Middleware\ThrottleLogin;
 use App\Http\Middleware\Verified;
 use Illuminate\Foundation\Application;
@@ -30,6 +31,8 @@ return Application::configure(basePath: dirname(__DIR__))
 
             'role' => Role::class,
             'permission' => Permission::class,
+
+            'subscribed' => Subscribed::class
 
         ]);
     })
