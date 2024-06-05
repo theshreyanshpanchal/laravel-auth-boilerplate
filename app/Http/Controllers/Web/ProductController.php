@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Web;
 
 use App\Enums\StripeProductType;
+use App\Enums\TransactionType;
 use App\Enums\UserRole;
 use App\Http\Controllers\Controller;
 use App\Models\Plan;
 use App\Models\Purchase;
+use App\Models\Transaction;
 use App\Services\StripeService;
 use Exception;
 use Illuminate\Contracts\View\View;
@@ -99,11 +101,31 @@ class ProductController extends Controller
         }
 
         Purchase::create([
+
             'user_id' => $user->id,
+
             'stripe_price' => $plan->plan_id,
+
             'product_id' => $plan->product_id,
+
             'amount' => $amount,
+
             'currency' => $plan->currency,
+
+        ]);
+
+        Transaction::create([
+
+            'user_id' => $user->id,
+
+            'stripe_price' => $plan->plan_id,
+
+            'type' => TransactionType::PURCHASED,
+
+            'amount' => $amount,
+
+            'currency' => $plan->currency
+
         ]);
 
         return redirect('products')->withSuccess('Product purchased successfully.');

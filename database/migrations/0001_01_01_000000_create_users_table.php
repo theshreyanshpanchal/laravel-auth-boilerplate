@@ -34,6 +34,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->softDeletes();
+
         });
 
         Schema::create('sessions', function (Blueprint $table) {
@@ -49,6 +50,7 @@ return new class extends Migration
             $table->longText('payload');
 
             $table->integer('last_activity')->index();
+            
         });
     }
 

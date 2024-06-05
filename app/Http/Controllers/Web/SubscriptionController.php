@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Web;
 
 use App\Enums\StripeProductType;
+use App\Enums\TransactionType;
 use App\Enums\UserRole;
 use App\Http\Controllers\Controller;
 use App\Models\Plan;
+use App\Models\Transaction;
 use App\Models\User;
 use App\Services\StripeService;
 use Exception;
@@ -71,7 +73,9 @@ class SubscriptionController extends Controller
 
         $paymentMethod = $request->input('payment_method');
 
-        $plan = $request->input('plan');
+        $planId = $request->input('plan');
+
+        $plan = Plan::where('plan_id', $planId)->first();
 
         $user->createOrGetStripeCustomer();
 
@@ -79,13 +83,27 @@ class SubscriptionController extends Controller
 
         try {
 
-            $user->newSubscription('default', $plan)->create($paymentMethod, [ 'email' => $user->email ]);
+            $user->newSubscription('default', $plan->plan_id)->create($paymentMethod, [ 'email' => $user->email ]);
 
         } catch (Exception $e) {
 
             return redirect('dashboard')->withErrors(['message' => 'Error creating subscription: ' . $e->getMessage()]);
 
         }
+
+        Transaction::create([
+
+            'user_id' => $user->id,
+
+            'stripe_price' => $plan->plan_id,
+
+            'type' => TransactionType::SUBSCRIBED,
+
+            'amount' => $plan->amount,
+
+            'currency' => $plan->currency
+
+        ]);
 
         return redirect('dashboard')->withSuccess('Subscription created successfully.');
     }

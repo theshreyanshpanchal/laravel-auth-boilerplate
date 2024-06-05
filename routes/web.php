@@ -6,6 +6,7 @@ use App\Http\Controllers\Web\DashboardController;
 use App\Http\Controllers\Web\ProductController;
 use App\Http\Controllers\Web\RolePermissionController;
 use App\Http\Controllers\Web\SubscriptionController;
+use App\Http\Controllers\Web\TransactionController;
 use App\Http\Controllers\Web\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -93,6 +94,12 @@ Route::middleware('authenticate')->group(function() {
             Route::prefix('activities')->group(function() {
 
                 Route::get('/', [ActivityController::class, 'view'])->name('view:activities');
+
+            });
+
+            Route::prefix('transactions')->group(function() {
+
+                Route::get('/', [TransactionController::class, 'view'])->name('view:transactions');
 
             });
 

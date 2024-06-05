@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('pm_last_four', 4)->nullable();
 
             $table->timestamp('trial_ends_at')->nullable();
+
         });
     }
 
@@ -29,6 +30,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
+
             $table->dropColumn([
 
                 'stripe_id',
@@ -39,6 +41,8 @@ return new class extends Migration
 
                 'trial_ends_at',
             ]);
+
         });
+
     }
 };

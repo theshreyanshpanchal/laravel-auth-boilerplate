@@ -64,6 +64,18 @@
 
             @endcan
 
+            @if (auth()->user()->roles->first()->name === App\Enums\UserRole::ADMIN->value)
+
+                <a href="{{ route('view:transactions') }}" class="flex items-center h-10 px-3 text-white hover:bg-green-600 @activeRoute('view:transactions') rounded-lg transition-colors duration-150 ease-in-out focus:outline-none focus:shadow-outline">
+
+                    <img class="w-8" src="{{ asset('svgs/sidebar/transactions.svg') }}" alt="Transactions">
+
+                    <span class="ml-2 duration-300 ease-in-out" :class="isExpanded ? 'opacity-100' : 'opacity-0'">{{ __('Transactions') }}</span>
+
+                </a>
+
+            @endif
+
             <a href="{{ route('view:subscriptions') }}" class="flex items-center h-10 px-3 text-white hover:bg-green-600 @activeRoute('view:subscriptions') rounded-lg transition-colors duration-150 ease-in-out focus:outline-none focus:shadow-outline">
 
                 <img class="w-8" src="{{ asset('svgs/sidebar/subscription.svg') }}" alt="Subscriptions">
@@ -84,7 +96,7 @@
 
                 <a href="{{ route('only-for-subscriber') }}" class="flex items-center h-10 px-3 text-white hover:bg-green-600 @activeRoute('only-for-subscriber') rounded-lg transition-colors duration-150 ease-in-out focus:outline-none focus:shadow-outline">
 
-                    <img class="w-8" src="{{ asset('svgs/sidebar/subscribed.svg') }}" alt="Subscriptions">
+                    <img class="w-8" src="{{ asset('svgs/sidebar/subscribed.svg') }}" alt="Subscribed">
 
                     <span class="ml-2 duration-300 ease-in-out" :class="isExpanded ? 'opacity-100' : 'opacity-0'">{{ __('Only for subscriber') }}</span>
 
